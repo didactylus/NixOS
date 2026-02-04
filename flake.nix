@@ -3,6 +3,7 @@
 
     inputs = {
 	nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+	wrappers.url = "github:Lassulus/wrappers";
 
 	disko.url = "github:nix-community/disko";
 	disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -12,7 +13,7 @@
 	inputs.nixpkgs.follows = "nixpkgs";
         };
     };
-    outputs = { self, nixpkgs, home-manager, disko, ... }: { nixosConfigurations.Keystone = nixpkgs.lib.nixosSystem {
+    outputs = { self, nixpkgs, wrappers, home-manager, disko, ... }: { nixosConfigurations.Keystone = nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
 	modules = [
 	    ./hosts/Keystone/default.nix

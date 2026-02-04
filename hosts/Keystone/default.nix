@@ -106,6 +106,7 @@
      #Audio
      helvum
      mpd
+     rmpc
 
      #Video
      vlc
