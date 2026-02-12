@@ -18,19 +18,7 @@
     { nixosConfigurations.Keystone = nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
 	modules = [
-	    ./hosts/Keystone/default.nix
-	];
-	
-    { nixosConfigurations.Atlas= nixpkgs.lib.nixosSystem {
-	system = "x86_64-linux";
-	modules = [
-	    ./hosts/Atlas/default.nix
-	];
-
-    { nixosConfigurations.BigIron = nixpkgs.lib.nixosSystem {
-	system = "x86_64-linux";
-	modules = [
-	    ./hosts/BigIron/default.nix
+	    ./hosts/Keystone/k1/default.nix
 	];
     };
   };

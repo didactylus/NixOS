@@ -64,7 +64,7 @@
      shell = pkgs.zsh;
     };
 
-     home-manager.users.Einfall = import ../../home/einfall.nix;
+     home-manager.users.Einfall = import ../userland/einfall.nix;
 
   #Services
     services.gvfs.enable = true;
@@ -114,6 +114,9 @@
 
      #Wireless
      bluez
+
+     #Utility
+     logiops
 
      #security
      polkit_gnome
