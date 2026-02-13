@@ -13,13 +13,17 @@
     };
     outputs = { self, nixpkgs, wrappers, home-manager, disko, ... }: 
     let
-
+        mkSystem = { hostname, modules }:
+	    nixpkgs.lib.nixosSystem {
+	    system = "x86_64-linux";
+	    modules = [
+	        home-manager.nixosModules.home-manager
+                ] ++ modules;
+	    };
     in
-    { nixosConfigurations.Keystone = nixpkgs.lib.nixosSystem {
-	system = "x86_64-linux";
-	modules = [
-	    ./hosts/Keystone/k1/default.nix
-	];
+    { nixosConfigurations.Keystone = mkSystem{
+	hostname = "Keystone";
+	modules = [ ./hosts/Keystone/k1.nix ];
     };
   };
 }
