@@ -4,6 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../user/profiles/Einfall.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -57,14 +58,9 @@
   security.pam.services.hyprlock = {};
 
   #Users 
-    users.users.Einfall = {
-     isNormalUser = true;
-     home = "/home/Einfall";
-     extraGroups = [ "wheel" "input" "networkmanager" "video" "render"];
-     shell = pkgs.zsh;
-    };
+    einfall.enable = true;
 
-     home-manager.users.Einfall = import ../userland/einfall.nix;
+    #home-manager.users.Einfall = import ../../user/profiles/Einfall.nix;
 
   #Services
     services.gvfs.enable = true;
