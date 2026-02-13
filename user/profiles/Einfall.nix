@@ -1,23 +1,20 @@
-{ lib, config, pkg, ... }:
+{ lib, config, pkgs, ... }:
 
 let
-    cfg = config.einfall
+    cfg = config.einfall;
 in
 {
     options = {
         einfall.enable = lib.mkEnableOption "enable user module";
-
-	einfall.userName = lib.mkOption {
-	    default = "Einfall/";
-	    description = "Einfall";
 	};
-    };
 
     config = lib.mkIf cfg.enable {
-        users.users.${cfg.userName} = {
+        users.users.Einfall = {
 	    isNormalUser = true;
-	    InitalPassword = "Password";
+	    home = "/home/Einfall";
+	    extraGroups = ["wheel" "input" "networkmanager" "video" "render"];
 	    shell = pkgs.zsh;
 	};
+    #home.stateVersion = "25.11";
     };
 }
