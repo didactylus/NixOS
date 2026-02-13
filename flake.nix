@@ -21,9 +21,9 @@
                 ] ++ modules;
 	    };
     in
-    { nixosConfigurations.Keystone = mkSystem{
-	hostname = "Keystone";
-	modules = [ ./hosts/Keystone/k1.nix ];
+    { nixosConfigurations.Nomad = mkSystem{
+	hostname = "Nomad";
+	modules = [ ./hosts/Nomad/n1.nix ];
     };
   };
 }
