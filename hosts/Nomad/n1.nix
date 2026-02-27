@@ -83,6 +83,9 @@
     enableSSHSupport = true;
   };
 
+  #Enable Dockerd
+  virtualization.docker.enable = true;
+
   #Packages
   environment.systemPackages = with pkgs; [
 
@@ -106,6 +109,9 @@
   #Video
   vlc
   mpv
+
+  #Gaming
+  ryubing
 
   #Wireless
   networkmanagerapplet
