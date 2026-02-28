@@ -18,9 +18,9 @@
  #Networking
   networking.hostName = "Gehirn";
   networking.networkmanager.enable = true;
-# networking.firewall.enable = true;
-# networking.firewall.allowedTCPPorts = [ ... ];
-# networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.allowedUDPPorts = [ ];
 
  #Time
   time.timeZone = "Asia/Tokyo";
@@ -31,17 +31,6 @@
      font = "Lat2-Terminus16";
      keyMap = "us";
 #   useXkbConfig = true; # use xkb.options in tty.
-  };
-
- #Enable CUPS to print documents.
-  services.printing.enable = true;
-
- #Enable sound.
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    jack.enable = true;
-    pulse.enable = true;
   };
 
   #Enable touchpad support (enabled default in most desktopManager).
@@ -61,10 +50,18 @@
   einfall.enable = true;
 
   #Services
+  services.resolved.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.openssh.enable = true;
   services.upower.enable = true;
+  services.printing.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    jack.enable = true;
+    pulse.enable = true;
+  };
 
   #Programs
   programs.firefox.enable = true;
@@ -84,7 +81,7 @@
   };
 
   #Enable Dockerd
-  virtualization.docker.enable = true;
+  virtualisation.docker.enable = true;
 
   #Packages
   environment.systemPackages = with pkgs; [
