@@ -11,19 +11,28 @@
 	inputs.nixpkgs.follows = "nixpkgs";
         };
     };
-    outputs = { self, nixpkgs, wrappers, home-manager, disko, ... }: 
+    outputs = { self, nixpkgs, wrappers, home-manager, disko, ... }:
     let
         mkSystem = { hostname, modules }:
 	    nixpkgs.lib.nixosSystem {
 	    system = "x86_64-linux";
 	    modules = [
 	        home-manager.nixosModules.home-manager
-                ] ++ modules;
+		{
+		  home-manager.useGlobalPkgs = true;
+		  home-manager.useUserPackages = true;
+		}
+              ] ++ modules;
 	    };
     in
     { nixosConfigurations.Nomad = mkSystem{
 	hostname = "Nomad";
 	modules = [ ./hosts/Nomad/n1.nix ];
+    };
+
+    { nixosConfigurations.Citadel = mkSystem{
+	hostname = "Citadel";
+	modules = [ ./hosts/Citadel/c1.nix ];
     };
   };
 }
