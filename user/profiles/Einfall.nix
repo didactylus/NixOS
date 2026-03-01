@@ -55,7 +55,7 @@ in
       # Dotfiles
       home.file.".config/nvim/init.lua".source = "${self}/user/dotfiles/Einfall/init.lua";
       home.file.".config/waybar/config".source = "${self}/user/dotfiles/Einfall/config.jsonc";
-      home.file.".config/hyprland/hyprland.conf".source = "${self}/user/dotfiles/Einfall/hyprland.conf";
+      home.file.".config/hypr/hyprland.conf".source = "${self}/user/dotfiles/Einfall/hyprland.conf";
      #home.file.".zshrc".source = ${self}/user/dotfiles/Einfall/.zshrc";
      systemd.user.tmpfiles.rules = [
       "d %h/.config/waybar 0755 - - - -" 
