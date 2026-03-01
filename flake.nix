@@ -16,11 +16,13 @@
         mkSystem = { hostname, modules }:
 	    nixpkgs.lib.nixosSystem {
 	    system = "x86_64-linux";
+	    specialArgs = { inherit self; };
 	    modules = [
 	        home-manager.nixosModules.home-manager
 		{
 		  home-manager.useGlobalPkgs = true;
 		  home-manager.useUserPackages = true;
+		  home-manager.extraSpecialArgs = { inherit self; };
 		}
               ] ++ modules;
 	    };

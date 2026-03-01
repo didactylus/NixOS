@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, self,... }:
 
 let
   cfg = config.einfall;
@@ -25,13 +25,8 @@ in
       home.stateVersion = "25.11";
 
       # Programs
-      programs.zsh = {
-        enable = true;
-        initExtra = ''
-          export EDITOR=nvim
-          export PATH="$HOME/.local/bin:$PATH"
-        '';
-      };
+      programs.zsh.enable = false;
+      home.packages = [ pkgs.zsh ];
 
       programs.neovim = {
         enable = true;
@@ -40,9 +35,9 @@ in
 
       programs.git = {
         enable = true;
-        userName = "didactylus";
-        userEmail = "brianbraden@proton.me";
-        extraConfig = {
+        settings = {
+          user.name = "didactylus";
+          user.email = "brianbraden@proton.me";
           init.defaultBranch = "main";
           pull.rebase = true;
         };
@@ -58,23 +53,13 @@ in
       };
 
       # Dotfiles
-      home.file.".config/nvim/init.lua" = {
-        source = ../../user/dotfiles/Einfall/init.lua;
-      };
-
-      home.file.".config/waybar/config" = {
-        source = ../../user/dotfiles/Einfall/config.jsonc;
-      };
-
-      home.file.".config/hyprland/hyprland.conf" = {
-        source = ../../user/dotfiles/Einfall/hyprland.config;
-      };
-
-      home.file.".zshrc" = {
-        source = ../../user/dotfiles/Einfall/.zshrc;
-      };
-
-      home.createDirectories = true;
+      home.file.".config/nvim/init.lua".source = "${self}/user/dotfiles/Einfall/init.lua";
+      home.file.".config/waybar/config".source = "${self}/user/dotfiles/Einfall/config.jsonc";
+      home.file.".config/hyprland/hyprland.conf".source = "${self}/user/dotfiles/Einfall/hyprland.conf";
+     #home.file.".zshrc".source = ${self}/user/dotfiles/Einfall/.zshrc";
+     systemd.user.tmpfiles.rules = [
+      "d %h/.config/waybar 0755 - - - -" 
+     ];
     };
   };
 }

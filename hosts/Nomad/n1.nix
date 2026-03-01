@@ -15,6 +15,14 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = false;
 
+  #Swap
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 96 * 1024;
+    }
+  ];
+
  #Networking
   networking.hostName = "Gehirn";
   networking.networkmanager.enable = true;
@@ -145,6 +153,7 @@
   docker
 
   #shell utils
+  yt-dlp
   bat
   fd
   ripgrep
