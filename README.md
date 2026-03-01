@@ -7,6 +7,9 @@ Users are also defined as a togglable selection. You just create a User.nix and 
 For reference here are a list of my compute systems defined in my flake
 
 Nomad - Used for my laptops
+
 Citadel - Used for main compute server
+
 Bulwark - Used for my desktops
+
 Sentinal - Used for my NVR
