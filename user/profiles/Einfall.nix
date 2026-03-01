@@ -60,7 +60,7 @@ in
       home.file.".config/hypr/hyprlock.conf".source = "${self}/user/dotfiles/Einfall/hyprlock.conf";
       home.file.".config/hypr/hypridle.conf".source = "${self}/user/dotfiles/Einfall/hypridle.conf";
       home.file.".config/hypr/hyprpaper.conf".source = "${self}/user/dotfiles/Einfall/hyprpaper.conf";
-      home.file.".config/quickshell/shell.qml".source = "${self}/user/dotfiles/Einfall/shell.qml";
+     #home.file.".config/quickshell/shell.qml".source = "${self}/user/dotfiles/Einfall/shell.qml";
     };
   };
 }
