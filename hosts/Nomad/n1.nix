@@ -58,6 +58,8 @@
   einfall.enable = true;
 
   #Services
+  services.fprintd.enable = true;
+  services.pcscd.enable = true;
   services.resolved.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
@@ -109,6 +111,7 @@
   #Audio
   helvum
   mpd
+  mpc
   rmpc
 
   #Video
@@ -127,6 +130,9 @@
 
   #security
   polkit_gnome
+  fprintd
+  pcsclite
+  ccid
 
   #file manager
   xfce.thunar
