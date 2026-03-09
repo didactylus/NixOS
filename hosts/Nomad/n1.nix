@@ -53,6 +53,8 @@
 
   #PAM
   security.pam.services.hyprlock = {};
+  security.pam.services.sudo.fprintAuth = false;
+  security.pam.services.hyprlock.fprintAuth = true;
 
   #Users 
   einfall.enable = true;
@@ -121,6 +123,10 @@
   #Gaming
   ryubing
 
+  #Docs
+  calibre
+  onlyoffice-desktopeditors
+
   #Wireless
   networkmanagerapplet
   bluez
@@ -128,7 +134,7 @@
   #Utility
   logiops
 
-  #security
+  #Security
   polkit_gnome
   fprintd
   pcsclite
