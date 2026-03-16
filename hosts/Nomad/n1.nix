@@ -137,8 +137,9 @@
   #Security
   polkit_gnome
   fprintd
-  pcsclite
   ccid
+  pcsctools
+  yubikey-manager
 
   #file manager
   xfce.thunar
@@ -165,6 +166,7 @@
   docker
 
   #shell utils
+  usbutils
   yt-dlp
   bat
   fd
