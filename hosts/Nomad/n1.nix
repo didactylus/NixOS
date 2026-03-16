@@ -24,7 +24,7 @@
   ];
 
  #Networking
-  networking.hostName = "Gehirn";
+  networking.hostName = "Nomad";
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ ];
