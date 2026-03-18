@@ -85,7 +85,7 @@
   programs.mtr.enable = true;
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
+    capSysNice = false;
   };
   programs.gnupg.agent = {
     enable = true;
@@ -138,7 +138,7 @@
   polkit_gnome
   fprintd
   ccid
-  pcsctools
+  pcsc-tools
   yubikey-manager
 
   #file manager
