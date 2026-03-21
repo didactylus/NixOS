@@ -14,7 +14,7 @@ in
     users.users.Einfall = {
       isNormalUser = true;
       home = "/home/Einfall";
-      extraGroups = [ "wheel" "input" "networkmanager" "video" "render" ];
+      extraGroups = [ "libvirtd" "wheel" "input" "networkmanager" "video" "render" ];
       shell = pkgs.zsh;
     };
 
