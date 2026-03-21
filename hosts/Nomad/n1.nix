@@ -91,7 +91,15 @@
     enable = true;
     enableSSHSupport = true;
   };
-
+  #Virtualization
+  virtualisation.libvirtd = {
+  enable = true;
+  qemu = {
+    package = pkgs.qemu_kvm;
+    runAsRoot = true;
+    swtpm.enable = true;
+  };
+};
   #Enable Dockerd
   virtualisation.docker.enable = true;
 
