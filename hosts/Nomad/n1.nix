@@ -119,6 +119,9 @@
   quickshell
 
   #Audio
+  pavucontrol
+  alsa-utils
+  pulseaudio
   helvum
   mpd
   mpc
