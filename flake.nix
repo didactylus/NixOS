@@ -19,6 +19,11 @@
 	    system = "x86_64-linux";
 	    specialArgs = { inherit self; };
 	    modules = [
+	   #disko.nixosModules.disko
+           #./sys/modules/disk/btrfs.nix
+	   #{
+	   # _module.args.disks = [ "/dev/nvme0" ];
+	   #}
 	        home-manager.nixosModules.home-manager
 		{
 		  home-manager.useGlobalPkgs = true;
