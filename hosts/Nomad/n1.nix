@@ -133,6 +133,7 @@
 
   #Gaming
   ryubing
+  osu-lazer
 
   #Docs
   calibre
