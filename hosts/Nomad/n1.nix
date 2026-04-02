@@ -133,7 +133,7 @@
 
   #Gaming
   ryubing
-  osu-lazer
+  osu-lazer-bin
 
   #Docs
   calibre
@@ -154,6 +154,7 @@
   yubikey-manager
 
   #file manager
+  doublecmd
   xfce.thunar
   xfce.thunar-volman
   xfce.thunar-vcs-plugin
