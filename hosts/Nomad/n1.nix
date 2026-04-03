@@ -126,6 +126,9 @@
   mpd
   mpc
   rmpc
+  lrcget
+  beets
+  chromaprint
 
   #Video
   vlc
