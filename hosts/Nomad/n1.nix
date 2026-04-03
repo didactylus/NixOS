@@ -110,6 +110,7 @@
   hyprpaper
   hyprlock
   hyprcursor
+  hypridle
   waybar
   wofi
   grim
