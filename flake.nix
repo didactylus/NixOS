@@ -36,12 +36,12 @@
     {
     nixosConfigurations.Nomad = mkSystem{
 	hostname = "Nomad";
-	modules = [ ./hosts/Nomad/n1.nix ];
+	modules = [ ./hosts/Nomad/config.nix ];
     };
 
     nixosConfigurations.Citadel = mkSystem{
 	hostname = "Citadel";
-	modules = [ ./hosts/Citadel/c1.nix ];
+	modules = [ ./hosts/Citadel/config.nix ];
     };
   };
 }
