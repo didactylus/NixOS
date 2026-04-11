@@ -4,7 +4,7 @@
   neovim.enable = true;
   tmux.enable = true;
   zsh.enable = true;
-  noctalia.enable = true;
+# noctalia.enable = true;
   };
   environment.systemPackages = with pkgs; [
     mpv
