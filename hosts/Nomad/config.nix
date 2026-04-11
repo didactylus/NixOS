@@ -3,11 +3,11 @@
 {
   imports =[
       ./hardware-configuration.nix
+      ../../sys/global.nix
+      ../../sys/bundles/default.nix
+      ../../sys/bundles/networking.nix
       ../../user/profiles/Einfall.nix
   ];
-
-  nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
  #Boot
   boot.loader.systemd-boot.enable = true;
@@ -25,21 +25,8 @@
 
  #Networking
   networking.hostName = "Nomad";
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];
-
- #Time
-  time.timeZone = "Asia/Tokyo";
-
- #Locale
-  i18n.defaultLocale = "en_US.UTF-8";
-   console = {
-     font = "Lat2-Terminus16";
-     keyMap = "us";
-#   useXkbConfig = true; # use xkb.options in tty.
-  };
 
   #Enable touchpad support (enabled default in most desktopManager).
 # services.libinput.enable = true;
@@ -53,27 +40,24 @@
 
   #PAM
   security.pam.services.hyprlock = {};
-  security.pam.services.sudo.fprintAuth = false;
+# security.pam.services.sudo.fprintAuth = false;
   security.pam.services.hyprlock.fprintAuth = true;
 
-  #Users 
-  einfall.enable = true;
-
   #Services
-  services.fprintd.enable = true;
-  services.pcscd.enable = true;
+# services.fprintd.enable = true;
+# services.pcscd.enable = true;
   services.resolved.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.openssh.enable = true;
   services.upower.enable = true;
   services.printing.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    jack.enable = true;
-    pulse.enable = true;
-  };
+# services.pipewire = {
+#   enable = true;
+#   alsa.enable = true;
+#   jack.enable = true;
+#   pulse.enable = true;
+# };
 
   #Programs
   programs.firefox.enable = true;
@@ -112,28 +96,27 @@
   hyprcursor
   hypridle
   waybar
-  wofi
-  grim
-  slurp
-  wl-clipboard
+# wofi
+# grim
+# slurp
+# wl-clipboard
   mangohud
-  quickshell
+# quickshell
 
   #Audio
-  pavucontrol
-  alsa-utils
+# pavucontrol
+# alsa-utils
   pulseaudio
-  helvum
-  mpd
-  mpc
-  rmpc
-  lrcget
-  beets
-  chromaprint
+# helvum
+# mpd
+# mpc
+# rmpc
+# lrcget
+# beets
+# chromaprint
 
   #Video
-  vlc
-  mpv
+# mpv
 
   #Gaming
   ryubing
@@ -145,6 +128,7 @@
 
   #Wireless
   networkmanagerapplet
+  blueman
   bluez
 
   #Utility
@@ -152,9 +136,9 @@
 
   #Security
   polkit_gnome
-  fprintd
-  ccid
-  pcsc-tools
+# fprintd
+# ccid
+# pcsc-tools
   yubikey-manager
 
   #file manager
@@ -164,7 +148,7 @@
   xfce.thunar-vcs-plugin
 
   #Notes
-  obsidian
+# obsidian
 
   #Theming
   pywal
@@ -178,38 +162,38 @@
   papirus-icon-theme
 
   #dev utils
-  git
+# git
   virt-manager
   docker
 
   #shell utils
-  usbutils
-  yt-dlp
-  bat
-  fd
-  ripgrep
-  fzf
-  jq
-  tree
-  dust
-  btop
-  htop
-  iotop
-  strace
-  curl
-  rsync
-  unzip
-  zip
-  p7zip
-  cloc
-  traceroute
-  fastfetch
-  less
-  ffmpeg
-  ghostty
-  wget
-  neofetch
-  browsh
+# usbutils
+# yt-dlp
+# bat
+# fd
+# ripgrep
+# fzf
+# jq
+# tree
+# dust
+# btop
+# htop
+# iotop
+# strace
+# curl
+# rsync
+# unzip
+# zip
+# p7zip
+# cloc
+# traceroute
+# fastfetch
+# less
+# ffmpeg
+# ghostty
+# wget
+# neofetch
+# browsh
 
   #privacy
   i2pd
