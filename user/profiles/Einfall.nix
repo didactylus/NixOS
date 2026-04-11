@@ -53,15 +53,6 @@ in
           };
         };
       };
-      environment.systemPackages = with pkgs; [
-	ghostty
-	neofetch
-	ghostty
-	obsidian
-	quickshell
-        rmpc
-	mpd
-      ];
 
       # Dotfiles
       home.file.".zshrc".source = "${self}/user/dotfiles/Einfall/.zshrc";
@@ -73,5 +64,15 @@ in
       home.file.".config/hypr/hyprpaper.conf".source = "${self}/user/dotfiles/Einfall/hyprpaper.conf";
      #home.file.".config/quickshell/shell.qml".source = "${self}/user/dotfiles/Einfall/shell.qml";
     };
-# };
+  
+    environment.systemPackages = with pkgs; [
+      ghostty
+      neofetch
+      ghostty
+      obsidian
+      quickshell
+      rmpc
+      mpd
+      ];
+  };
 }
