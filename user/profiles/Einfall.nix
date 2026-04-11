@@ -5,11 +5,11 @@ let
 in
 
 {
-  options = {
-    einfall.enable = lib.mkEnableOption "enable Einfall user";
-  };
+# options = {
+#   einfall.enable = lib.mkEnableOption "enable Einfall user";
+# };
 
-  config = lib.mkIf cfg.enable {
+# config = lib.mkIf cfg.enable {
     # NixOS user creation
     users.users.Einfall = {
       isNormalUser = true;
@@ -25,33 +25,43 @@ in
       home.stateVersion = "25.11";
 
       # Programs
-      programs.zsh.enable = false;
-      home.packages = [ pkgs.zsh ];
+      home.packages = [ pkgs.noctalia];
 
-      programs.neovim = {
-        enable = true;
-        defaultEditor = true;
-      };
+      programs = {
+        neovim = {
+          enable = true;
+          defaultEditor = true;
+        };
 
-      programs.git = {
-        enable = true;
-        settings = {
-          user.name = "didactylus";
-          user.email = "brianbraden@proton.me";
-          init.defaultBranch = "main";
-          pull.rebase = true;
+        git = {
+          enable = true;
+          settings = {
+            user.name = "didactylus";
+            user.email = "brianbraden@proton.me";
+            init.defaultBranch = "main";
+            pull.rebase = true;
+          };
+        };
+
+        ssh = {
+          enable = true;
+	  enableDefaultConfig = false;
+          matchBlocks."github.com" = {
+            hostname = "github.com";
+            user = "didactylus";
+            identityFile = "~/.ssh/id_ed25519.pub";
+          };
         };
       };
-
-      programs.ssh = {
-        enable = true;
-	enableDefaultConfig = false;
-        matchBlocks."github.com" = {
-          hostname = "github.com";
-          user = "didactylus";
-          identityFile = "~/.ssh/id_ed25519.pub";
-        };
-      };
+      environment.systemPackages = with pkgs; [
+	ghostty
+	neofetch
+	ghostty
+	obsidian
+	quickshell
+        rpmc
+	mpd
+      ];
 
       # Dotfiles
       home.file.".zshrc".source = "${self}/user/dotfiles/Einfall/.zshrc";
@@ -63,5 +73,5 @@ in
       home.file.".config/hypr/hyprpaper.conf".source = "${self}/user/dotfiles/Einfall/hyprpaper.conf";
      #home.file.".config/quickshell/shell.qml".source = "${self}/user/dotfiles/Einfall/shell.qml";
     };
-  };
+# };
 }
