@@ -25,7 +25,7 @@ in
       home.stateVersion = "25.11";
 
       # Programs
-      home.packages = [ pkgs.noctalia];
+      home.packages = [ pkgs.zsh];
 
       programs = {
         neovim = {
