@@ -59,7 +59,7 @@ in
 	ghostty
 	obsidian
 	quickshell
-        rpmc
+        rmpc
 	mpd
       ];
 
