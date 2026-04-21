@@ -1,16 +1,14 @@
-{ lib, config, pkgs, self,... }:
+{ lib, config, pkgs, self, inputs, ... }:
 
 let
-  cfg = config.einfall;
+  repo = /home/Einfall/.compute/nixos;
+  cfg = config.nyx.users.einfall;
 in
 
 {
-# options = {
-#   einfall.enable = lib.mkEnableOption "enable Einfall user";
-# };
+  options.nyx.users.einfall.enable = lib.mkEnableOption "enable Einfall user";
 
-# config = lib.mkIf cfg.enable {
-    # NixOS user creation
+  config = lib.mkIf cfg.enable {
     users.users.Einfall = {
       isNormalUser = true;
       home = "/home/Einfall";
@@ -18,14 +16,13 @@ in
       shell = pkgs.zsh;
     };
 
-    # Home-manager config for Einfall
     home-manager.users.Einfall = {
       home.username = "Einfall";
       home.homeDirectory = "/home/Einfall";
       home.stateVersion = "25.11";
-
-      # Programs
-      home.packages = [ pkgs.zsh];
+      home.packages = [
+#       inputs.noctalia.packages.${pkgs.system}.default
+      ];
 
       programs = {
         neovim = {
@@ -49,20 +46,20 @@ in
           matchBlocks."github.com" = {
             hostname = "github.com";
             user = "didactylus";
-            identityFile = "~/.ssh/id_ed25519.pub";
+            identityFile = "~/.ssh/id_ed25519";
           };
         };
       };
 
       # Dotfiles
-#     home.file.".zshrc".source = "${self}/user/dotfiles/Einfall/.zshrc";
-#     home.file.".config/nvim/init.lua".source = "${self}/user/dotfiles/Einfall/init.lua";
-#     home.file.".config/waybar/config".source = "${self}/user/dotfiles/Einfall/config.jsonc";
-#     home.file.".config/hypr/hyprland.conf".source = "${self}/user/dotfiles/Einfall/hyprland.conf";
-#     home.file.".config/hypr/hyprlock.conf".source = "${self}/user/dotfiles/Einfall/hyprlock.conf";
-#     home.file.".config/hypr/hypridle.conf".source = "${self}/user/dotfiles/Einfall/hypridle.conf";
-#     home.file.".config/hypr/hyprpaper.conf".source = "${self}/user/dotfiles/Einfall/hyprpaper.conf";
-#    #home.file.".config/quickshell/shell.qml".source = "${self}/user/dotfiles/Einfall/shell.qml";
+#    home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/.zshrc";
+#    home.file.".config/nvim/init.lua".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/init.lua";
+#    home.file.".config/waybar/config".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/config.jsonc";
+#    home.file.".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/hyprland.conf";
+#    home.file.".config/hypr/hyprlock.conf".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/hyprlock.conf";
+#    home.file.".config/hypr/hypridle.conf".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/hypridle.conf";
+#    home.file.".config/hypr/hyprpaper.conf".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/hyprpaper.conf";
+#    home.file.".config/quickshell/shell.qml".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/shell.qml";
     };
   
     environment.systemPackages = with pkgs; [
@@ -74,4 +71,5 @@ in
       rmpc
       mpd
       ];
+  };
 }

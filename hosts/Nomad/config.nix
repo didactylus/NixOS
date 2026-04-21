@@ -3,9 +3,7 @@
 {
   imports =[
       ./hardware-configuration.nix
-      ../../sys/global.nix
-      ../../sys/bundles/default.nix
-      ../../sys/bundles/networking.nix
+      ../../sys/agg.nix
       ../../user/profiles/Einfall.nix
   ];
 
@@ -22,14 +20,11 @@
       size = 96 * 1024;
     }
   ];
-
+  nyx.users.einfall.enable = true;
  #Networking
   networking.hostName = "Nomad";
   networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];
-
-  #Enable touchpad support (enabled default in most desktopManager).
-# services.libinput.enable = true;
 
   #Polkit
   xdg.portal = {
@@ -39,9 +34,9 @@
   security.polkit.enable = true;
 
   #PAM
-  security.pam.services.hyprlock = {};
+# security.pam.services.hyprlock = {};
 # security.pam.services.sudo.fprintAuth = false;
-  security.pam.services.hyprlock.fprintAuth = true;
+# security.pam.services.hyprlock.fprintAuth = true;
 
   #Services
 # services.fprintd.enable = true;
@@ -52,12 +47,6 @@
   services.openssh.enable = true;
   services.upower.enable = true;
   services.printing.enable = true;
-# services.pipewire = {
-#   enable = true;
-#   alsa.enable = true;
-#   jack.enable = true;
-#   pulse.enable = true;
-# };
 
   #Programs
   programs.firefox.enable = true;
@@ -75,17 +64,6 @@
     enable = true;
     enableSSHSupport = true;
   };
-  #Virtualization
-  virtualisation.libvirtd = {
-  enable = true;
-  qemu = {
-    package = pkgs.qemu_kvm;
-    runAsRoot = true;
-    swtpm.enable = true;
-  };
-};
-  #Enable Dockerd
-  virtualisation.docker.enable = true;
 
   #Packages
   environment.systemPackages = with pkgs; [
@@ -96,7 +74,7 @@
   hyprcursor
   hypridle
   waybar
-# wofi
+  wofi
 # grim
 # slurp
 # wl-clipboard
@@ -104,16 +82,8 @@
 # quickshell
 
   #Audio
-# pavucontrol
-# alsa-utils
   pulseaudio
 # helvum
-# mpd
-# mpc
-# rmpc
-# lrcget
-# beets
-# chromaprint
 
   #Video
 # mpv
@@ -130,6 +100,8 @@
   networkmanagerapplet
   blueman
   bluez
+  mullvad
+  mullvad-vpn
 
   #Utility
   logiops
@@ -162,39 +134,8 @@
   papirus-icon-theme
 
   #dev utils
-# git
   virt-manager
   docker
-
-  #shell utils
-# usbutils
-# yt-dlp
-# bat
-# fd
-# ripgrep
-# fzf
-# jq
-# tree
-# dust
-# btop
-# htop
-# iotop
-# strace
-# curl
-# rsync
-# unzip
-# zip
-# p7zip
-# cloc
-# traceroute
-# fastfetch
-# less
-# ffmpeg
-# ghostty
-# wget
-# neofetch
-# browsh
-
   #privacy
   i2pd
   i2pd-tools
