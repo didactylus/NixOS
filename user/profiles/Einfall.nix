@@ -52,14 +52,14 @@ in
       };
 
       # Dotfiles
-#    home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/.zshrc";
-#    home.file.".config/nvim/init.lua".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/init.lua";
-#    home.file.".config/waybar/config".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/config.jsonc";
-#    home.file.".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/hyprland.conf";
-#    home.file.".config/hypr/hyprlock.conf".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/hyprlock.conf";
-#    home.file.".config/hypr/hypridle.conf".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/hypridle.conf";
-#    home.file.".config/hypr/hyprpaper.conf".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/hyprpaper.conf";
-#    home.file.".config/quickshell/shell.qml".source = config.lib.file.mkOutOfStoresymlink "${repo}/user/dotfiles/Einfall/shell.qml";
+     home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/.zshrc";
+     home.file.".config/nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/init.lua";
+     home.file.".config/waybar/config".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/config.jsonc";
+     home.file.".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/hyprland.conf";
+     home.file.".config/hypr/hyprlock.conf".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/hyprlock.conf";
+     home.file.".config/hypr/hypridle.conf".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/hypridle.conf";
+     home.file.".config/hypr/hyprpaper.conf".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/hyprpaper.conf";
+     home.file.".config/quickshell/shell.qml".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/shell.qml";
     };
   
     environment.systemPackages = with pkgs; [
