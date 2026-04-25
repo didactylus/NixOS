@@ -1,15 +1,18 @@
-This is my personal NixOS flake for all my devices I have.
+## Nyx Flake
 
-The goal is to have a modular system that can be configured for any system that I need at any time. This is achieved by having 3 parts. First you have modules. Modules are small wrappers for any applications you would like yo have on any of your systems. These modules then get rolled up into bundles which package similar modules to be used together for an objective. Think having a core bundle that you want every system to have and then maybe a gaming bundle for gaming centric machines. Or maybe virtualization butndle for virtualization tasks. These bundles are then put into a configuation specific to a machine.
-
-Users are also defined as a togglable selection. You just create a User.nix and toggle it inside the system you want to have that user on. Dotfiles are also handled through the flake so you can just git clone and keep everything in one place.
+The goal is to have a modular system that can be configured for any system that I need at any time. This is handled through modules, bundles, and user profiles.
+First you have modules. Modules basically allow you to have a baseline configuration for common apps that are able to be configured.
+These modules then get grouped into bundles to then be used together based on activity.
+Then modules can be toggled individually or in a bundle.
+Users are also handled this way by having a <USERNAME>.nix file that you define your userand then enabled in the config file for the host you would like to add said user to.
+Dotfiles are also handled through the flake in user/dotfiles/<USERNAME>/. Here you can reference these dotfiles in your user profile via homemanager.
 
 For reference here are a list of my compute systems defined in my flake
 
-Nomad - Used for my laptops
+Nomad - Main laptop
 
-Citadel - Used for main compute server
+Citadel - Main Compute server
 
-Bulwark - Used for my desktops
+Bulwark - Main Desktop
 
-Sentinal - Used for my NVR
+Sentinel - NVR
