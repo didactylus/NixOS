@@ -8,7 +8,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    hardware.bluetooh = {
+    hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;
       settings.General.Exerimental = true;
