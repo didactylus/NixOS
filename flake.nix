@@ -3,45 +3,53 @@
 
     inputs = {
 	nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-	wrappers.url = "github:Lassulus/wrappers";
+  ik_llama.url = "github:ikawrakow/ik_llama.cpp";
 	disko.url = "github:nix-community/disko";
 	disko.inputs.nixpkgs.follows = "nixpkgs";
-	nixos-wsl.url = "github:nix-community/NixOS-WSL";
 	home-manager = {
 	url = "github:nix-community/home-manager/release-25.11";
 	inputs.nixpkgs.follows = "nixpkgs";
         };
     };
-    outputs = { self, nixpkgs, wrappers, home-manager, disko, ... }:
+    outputs = inputs@{ self, nixpkgs, home-manager, disko, ik_llama, ... }:
     let
         mkSystem = { hostname, modules }:
 	    nixpkgs.lib.nixosSystem {
 	    system = "x86_64-linux";
-	    specialArgs = { inherit self; };
+	    specialArgs = { inherit self inputs; };
 	    modules = [
 	   #disko.nixosModules.disko
            #./sys/modules/disk/btrfs.nix
 	   #{
 	   # _module.args.disks = [ "/dev/nvme0" ];
 	   #}
-	        home-manager.nixosModules.home-manager
-		{
-		  home-manager.useGlobalPkgs = true;
-		  home-manager.useUserPackages = true;
-		  home-manager.extraSpecialArgs = { inherit self; };
-		}
+	  home-manager.nixosModules.home-manager
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = { inherit self inputs; };
+    }
               ] ++ modules;
 	    };
     in
     {
     nixosConfigurations.Nomad = mkSystem{
-	hostname = "Nomad";
-	modules = [ ./hosts/Nomad/config.nix ];
+      hostname = "Nomad";
+      modules = [ ./hosts/Nomad/config.nix ];
     };
 
     nixosConfigurations.Citadel = mkSystem{
-	hostname = "Citadel";
-	modules = [ ./hosts/Citadel/config.nix ];
+      hostname = "Citadel";
+      modules = [ ./hosts/Citadel/config.nix ];
+    };
+
+    nixosConfigurations.Bulwark = mkSystem{
+      hostname = "Bulwark";
+      modules = [ ./hosts/Bulwark/config.nix ];
+    };
+    nixosConfigurations.Sentinel = mkSystem{
+      hostname = "Sentinel";
+      modules = [ ./hosts/Sentinel/config.nix ];
     };
   };
 }
