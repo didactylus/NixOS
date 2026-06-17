@@ -3,8 +3,8 @@
 {
   imports =[
       ./hardware-configuration.nix
-      ../../sys/agg.nix
-      ../../user/profiles/Einfall.nix
+      ../../agg.nix
+      ../../user/agg.nix
   ];
 
  #Boot
@@ -20,26 +20,33 @@
       size = 96 * 1024;
     }
   ];
-  nyx.users.einfall.enable = true;
- #Networking
+
+ #Hostname
   networking.hostName = "Nomad";
+
+ #Firewall
   networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];
 
-  #Polkit
-  xdg.portal = {
+ #Users
+  nyx.users.einfall.enable = true;
+
+ #Bundles
+  nyx.audio = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    tools.enable = true;
   };
-  security.polkit.enable = true;
+  nyx.core.enable = true;
+  nyx.hyprland.enable = true;
+  nyx.locale.enable = true;
+  nyx.media.music.enable = true;
+  nyx.media.music.tools.enable = true;
+  nyx.media.video.enable = true;
+  nyx.media.video.tools.enable = true;
 
-  #PAM
-# security.pam.services.hyprlock = {};
-# security.pam.services.sudo.fprintAuth = false;
-# security.pam.services.hyprlock.fprintAuth = true;
+ #Modules
 
-  #Services
-# services.fprintd.enable = true;
+ #Services
 # services.pcscd.enable = true;
   services.resolved.enable = true;
   services.gvfs.enable = true;
@@ -53,7 +60,6 @@
   programs.hyprland.enable = true;
   programs.tmux.enable = true;
   programs.neovim.enable = true;
-  programs.zsh.enable = true;
   programs.steam.enable = true;
   programs.mtr.enable = true;
   programs.gamescope = {
@@ -65,30 +71,8 @@
     enableSSHSupport = true;
   };
 
-  #Packages
+ #Packages
   environment.systemPackages = with pkgs; [
-
-  #Desktop utils
-  hyprpaper
-  hyprlock
-  hyprcursor
-  hypridle
-  waybar
-  wofi
-# grim
-# slurp
-# wl-clipboard
-  mangohud
-# quickshell
-
-  #Audio
-  pulseaudio
-# helvum
-
-  #Video
-# mpv
-
-  #Gaming
   ryubing
   osu-lazer-bin
 
@@ -97,30 +81,16 @@
   onlyoffice-desktopeditors
 
   #Wireless
-  networkmanagerapplet
-  blueman
-  bluez
   mullvad
   mullvad-vpn
 
   #Utility
   logiops
-
-  #Security
-  polkit_gnome
-# fprintd
-# ccid
-# pcsc-tools
-  yubikey-manager
-
   #file manager
   doublecmd
   xfce.thunar
   xfce.thunar-volman
   xfce.thunar-vcs-plugin
-
-  #Notes
-# obsidian
 
   #Theming
   pywal
