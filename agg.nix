@@ -1,9 +1,9 @@
 { ... }: 
 let
   sysDir = ./sys;
-  userDir = ./user;
+  userDir = ./user/profiles;
   sys = name: sysDir + "/${name}.nix";
-  user = name: userDir + "/${name}.nix";
+  usr = name: userDir + "/${name}.nix";
 in
 {
   imports = [
@@ -17,5 +17,6 @@ in
       (sys "virtualization")
       (sys "misc")
       (sys "ai")
+      (usr "Einfall")
     ];
 }
