@@ -4,7 +4,6 @@
   imports =[
       ./hardware-configuration.nix
       ../../agg.nix
-      ../../user/agg.nix
   ];
 
  #Boot
