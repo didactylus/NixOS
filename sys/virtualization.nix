@@ -1,49 +1,43 @@
 { lib, config, pkgs, ... }:
 
 let
-  cfg = config.nyx.modules.podman;
+  cfg = config.nyx.virt;
 in
 
 {
-  options.nyx.modules.podman = {
-    enable = lib.mkEnableOption "enable Podman";
-    dockerCompat = lib.mkEnableOption "Docker CLI compatibility (podman-docker)";
+  options.nyx.virt= {
+    podman.enable = lib.mkEnableOption "enable Podman";
+    qemu.enable = lib.mkEnableOption "enable QEMU/Libvirt";
   };
 
-  config = lib.mkIf cfg.enable {
-    virtualisation.podman = {
-      enable = true;
-      dockerCompat = cfg.dockerCompat;
-      defaultNetwork.settings.dns_enabled = true;
-    };
+  config = lib.mkMerge [ 
 
-    environment.systemPackages = with pkgs; [
-      podman
-      podman-compose
-    ];
-  };
-}
-
-{ lib, config, pkgs, ... }:
-
-let
-  cfg = config.nyx.modules.qemu;
-in
-
-{
-  options.nyx.modules.qemu.enable = lib.mkEnableOption "enable QEMU/Libvirt";
-
-  config = lib.mkIf cfg.enable {
-    virtualisation.libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        runAsRoot = true;
-        swtpm.enable = true;
+    (lib.mkIf cfg.podman.enable {
+      virtualisation.podman = {
+        enable = true;
+        dockerCompat = true;
+        defaultNetwork.settings.dns_enabled = true;
       };
-    };
-    environment.systemPackages = with pkgs; [
-      virt-manager
-    ];
-  };
+
+      environment.systemPackages = with pkgs; [
+        podman
+        podman-compose
+      ];
+    })
+
+    (lib.mkIf cfg.qemu.enable {
+      virtualisation.libvirtd = {
+        enable = true;
+        qemu = {
+          package = pkgs.qemu_kvm;
+          runAsRoot = true;
+          swtpm.enable = true;
+        };
+      };
+      environment.systemPackages = with pkgs; [
+        virt-manager
+      ];
+    })
+
+  ];
 }
