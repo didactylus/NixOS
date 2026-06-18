@@ -1,7 +1,7 @@
 { lib, config, pkgs, self, inputs, ... }:
 
 let
-  repo = /home/Einfall/.compute/nixos;
+  repo = self;
   cfg = config.nyx.users.einfall;
 in
 
@@ -12,11 +12,12 @@ in
     users.users.Einfall = {
       isNormalUser = true;
       home = "/home/Einfall";
-      extraGroups = [ "libvirtd" "wheel" "input" "networkmanager" "video" "render" ];
+      extraGroups = [ "libvirtd" "wheel" "input" "networkmanager" "video" "render" "podman"];
       shell = pkgs.zsh;
     };
 
-    home-manager.users.Einfall = {
+    home-manager.users.Einfall = { config, ... }: 
+    {
       home.username = "Einfall";
       home.homeDirectory = "/home/Einfall";
       home.stateVersion = "25.11";
@@ -63,13 +64,20 @@ in
     };
   
     environment.systemPackages = with pkgs; [
+    #Shell
+      zsh
+    #Terminal Emulator
       ghostty
+    #Launcher
+      wofi
+    #Bar
+      waybar
+    #Browser
+      #librewolf
+      qutebrowser
+    #MISC
       neofetch
-      ghostty
       obsidian
-      quickshell
-      rmpc
-      mpd
       ];
   };
 }
