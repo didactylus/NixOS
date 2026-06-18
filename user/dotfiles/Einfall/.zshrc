@@ -36,13 +36,6 @@ setopt HIST_IGNORE_ALL_DUPS
 #key repeat delay
 export KEYTIMEOUT=1
 
-#aliases
-alias zconf='$EDITOR ~/.config/zsh/.zshrc'
-alias hconf='$EDITOR ~/.config/hypr/hyprland.conf'
-alias nlua='$EDITOR ~/.config/nvim/init.lua'
-alias llama-chat='~/Temp/llama.cpp/build/bin/llama-cli -m "Storage/LLMs/Models/nous-hermes-2-mistral-8x7b-dpo.Q6_K.gguf" --interactive --chat --color -t $(nproc)'
-alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-
 #pywal16
 [ -f "${HOME}/.cache/wal/colors.sh" ] && source "${HOME}/.cache/wal/colors.sh"
 
