@@ -34,21 +34,29 @@
  #Bundles
   nyx.audio = {
     enable = true;
-    tools.enable = true;
+    gui.enable = true;
   };
+
+  nyx.ai.ik_llama.enable = true;
   nyx.core.enable = true;
   nyx.hyprland.enable = true;
-  nyx.locale.enable = true;
-  nyx.media.music.enable = true;
-  nyx.media.music.tools.enable = true;
-  nyx.media.video.enable = true;
-  nyx.media.video.tools.enable = true;
+  nyx.locale.jpen.enable = true;
+  nyx.networking.enable = true;
+  nyx.media.music = {
+    enable = true;
+    tools.enable = true;
+  };
+  nyx.media.video = { 
+    enable = true;
+    tools.enable = true;
+  };
+  nyx.virt.podman.enable = true;
+  nyx.virt.qemu.enable = true;
 
  #Modules
 
  #Services
 # services.pcscd.enable = true;
-  services.resolved.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.openssh.enable = true;
@@ -56,12 +64,6 @@
   services.printing.enable = true;
 
   #Programs
-  programs.firefox.enable = true;
-  programs.hyprland.enable = true;
-  programs.tmux.enable = true;
-  programs.neovim.enable = true;
-  programs.steam.enable = true;
-  programs.mtr.enable = true;
   programs.gamescope = {
     enable = true;
     capSysNice = false;
@@ -105,7 +107,6 @@
 
   #dev utils
   virt-manager
-  docker
   #privacy
   i2pd
   i2pd-tools
