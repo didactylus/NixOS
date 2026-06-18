@@ -1,15 +1,15 @@
 { config, lib, ... }: 
 
 let
-  cfg = config.nyx.bundles.locale;
+  cfg = config.nyx.locale;
 in
 
 {
-  options.nyx.bundles.locale = {
+  options.nyx.locale = {
     jpen.enable = lib.mkEnableOption "set locale";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.jpen.enable {
     time.timeZone = "Asia/Tokyo";
     i18n.defaultLocale = "en_US.UTF-8";
     console = {

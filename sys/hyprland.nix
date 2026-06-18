@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.nyx.bundles.hyprland;
+  cfg = config.nyx.hyprland;
 in
 
 {
