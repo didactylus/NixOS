@@ -1,22 +1,21 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
-  cfg = config.nyx.bundles.ai;
+  cfg = config.nyx.ai;
 in
 
 {
-  options.nyx.bundles.ai = {
-    enable =  lib.mkEnableOption "enable locally hosted LLM capability"
-
+  options.nyx.ai = {
+    ik_llama.enable = lib.mkEnableOption "enables ik_llama.cpp";
   };
 
-  config = lib.mkIf cfg.enable {
-    services.ollama = {
-      enable = true;
-      acceleration = "vulkan";
-    };
-    environment.systemPackages = with pkg; [
-      llama-cpp
-      vulkan-tools
-    ]
+  config = lib.mkMerge [
+
+    (lib.mkIf cfg.ik_llama.enable {
+      environment.systemPackages = [
+        inputs.ik_llama.packages.${pkgs.system}.default
+      ];
+    })
+
+  ];
 }
