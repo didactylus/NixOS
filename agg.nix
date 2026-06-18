@@ -13,6 +13,9 @@ in
       (sys "hyprland")
       (sys "locale")
       (sys "networking")
+      (sys "media")
       (sys "virtualization")
+      (sys "misc")
+      (sys "ai")
     ];
 }
