@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   cfg = config.nyx.auth.fprint;
 in

@@ -1,11 +1,11 @@
-{ lib, config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
-  cfg = config.nyx.modules.podman;
+  cfg = config.nyx.podman;
 in
 
 {
-  options.nyx.modules.podman = {
+  options.nyx.podman = {
     enable = lib.mkEnableOption "enable Podman";
     dockerCompat = lib.mkEnableOption "Docker CLI compatibility (podman-docker)";
   };
