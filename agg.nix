@@ -17,6 +17,7 @@ in
       (sys "virtualization")
       (sys "misc")
       (sys "ai")
+      (sys "bolt")
       (usr "Einfall")
     ];
 }
