@@ -1,4 +1,4 @@
-{ lib, config, pkgs, self, inputs, ... }:
+{ config, lib, pkgs, self, inputs, ... }:
 
 let
   repo = self;
@@ -62,7 +62,7 @@ in
      home.file.".config/hypr/hyprpaper.conf".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/hyprpaper.conf";
      home.file.".config/quickshell/shell.qml".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/shell.qml";
     };
-  
+
     environment.systemPackages = with pkgs; [
     #Shell
       zsh
@@ -74,10 +74,21 @@ in
       waybar
     #Browser
       #librewolf
+      firefox
       qutebrowser
+    #File manager
+      doublecmd
+      xfce.thunar
+      xfce.thunar-volman
+      xfce.thunar-vcs-plugin
+
     #MISC
       neofetch
       obsidian
-      ];
+      calibre
+      onlyoffice-desktopeditors
+      vencord
+      freetube
+    ];
   };
 }
