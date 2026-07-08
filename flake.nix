@@ -3,7 +3,7 @@
 
     inputs = {
 	nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-  ik_llama.url = "github:ikawrakow/ik_llama.cpp";
+  ik_llama.url = "path:/com/ik_llama.cpp-main";
 	disko.url = "github:nix-community/disko";
 	disko.inputs.nixpkgs.follows = "nixpkgs";
 	home-manager = {
