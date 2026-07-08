@@ -53,7 +53,7 @@ in
       };
 
       # Dotfiles
-     home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/.zshrc";
+     home.file."zshrc".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/.zshrc";
      home.file.".config/nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/init.lua";
      home.file.".config/waybar/config".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/config.jsonc";
      home.file.".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink "${repo}/user/dotfiles/Einfall/hyprland.conf";
