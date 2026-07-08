@@ -12,9 +12,11 @@ export XDG_MUSIC_DIR="$HOME/Media/Music"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_HOME="$HOME/.local/state"
+export XDG_PICTURES_DIR="$HOME/Media/Image/Pictures"
+
+#MPD
 export MPD_HOST="127.0.0.1"
 export MPD_PORT="6600"
-export XDG_PICTURES_DIR="$HOME/Media/Image/Pictures"
 
 #PATH
 export PATH="/bin:$HOME/.bin:$PATH"
