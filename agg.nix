@@ -1,23 +1,35 @@
 { ... }: 
 let
-  sysDir = ./sys;
+  baseDir = ./base;
+  bootDir = ./boot;
+  devDir = ./device;
+  guiDir = ./gui;
+  idDir = ./identity;
   userDir = ./user/profiles;
-  sys = name: sysDir + "/${name}.nix";
+
+  base = name: baseDir + "/${name}.nix";
+  boot = name: bootDir + "/${name}.nix";
+  dev = name: devDir + "/${name}.nix";
+  gui = name: guiDir + "/${name}.nix";
   usr = name: userDir + "/${name}.nix";
+
 in
 {
   imports = [
-      (sys "global")
-      (sys "audio")
-      (sys "core")
-      (sys "hyprland")
-      (sys "locale")
-      (sys "networking")
-      (sys "media")
-      (sys "virtualization")
-      (sys "misc")
-      (sys "ai")
-      (sys "bolt")
+      (base "audio")
+      (base "auth")
+      (base "bolt")
+      (base "core")
+      (base "diagnostic")
+      (base "locale")
+      (base "networking")
+      (base "media")
+      (base "virtualization")
+      (boot "btrfs")
+      (boot "ext4")
+      (boot "zfs")
+      (gui "de")
+      (gui "wm")
       (usr "Einfall")
     ];
 }
