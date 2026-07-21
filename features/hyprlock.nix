@@ -1,4 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, j
+in
+{
   security.pam.services.hyprlock = {
   enable = true;
   fprintAuth = true;
