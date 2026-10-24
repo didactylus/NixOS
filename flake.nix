@@ -35,21 +35,21 @@
     {
     nixosConfigurations.Nomad = mkSystem{
       hostname = "Nomad";
-      modules = [ ./hosts/Nomad/config.nix ];
+      modules = [ ./identity/Nomad/config.nix ];
     };
 
     nixosConfigurations.Citadel = mkSystem{
       hostname = "Citadel";
-      modules = [ ./hosts/Citadel/config.nix ];
+      modules = [ ./identity/Citadel/config.nix ];
     };
 
     nixosConfigurations.Bulwark = mkSystem{
       hostname = "Bulwark";
-      modules = [ ./hosts/Bulwark/config.nix ];
+      modules = [ ./identity/Bulwark/config.nix ];
     };
     nixosConfigurations.Sentinel = mkSystem{
       hostname = "Sentinel";
-      modules = [ ./hosts/Sentinel/config.nix ];
+      modules = [ ./identity/Sentinel/config.nix ];
     };
   };
 }

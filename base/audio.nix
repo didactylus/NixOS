@@ -24,10 +24,12 @@ in
         pamixer
       ];
     })
+
     (lib.mkIf (cfg.enable && cfg.gui.enable) {
       environment.systemPackages = with pkgs; [
         pavucontrol
       ];
     })
+
   ];
 }

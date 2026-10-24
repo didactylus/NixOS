@@ -13,7 +13,7 @@ in
 
     (lib.mkIf cfg.ik_llama.enable {
       environment.systemPackages = [
-        inputs.ik_llama.packages.${pkgs.system}.default
+        inputs.ik_llama.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
     })
 

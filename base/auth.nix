@@ -11,14 +11,13 @@ in
     login = lib.mkEnableOption "Allow fingerprint for TTY login";
   };
 
-    config = lib.mkIf cfg.enable {
+  config = lib.mkMerge [
+    (lib.mkIf cfg.enable {
       services.fprintd.enable = true;
-
       security.pam.services.sudo.fprintAuth = cfg.sudo;
       security.pam.services.hyprlock.fprintAuth = cfg.hyprlock;
       security.pam.services.polkit-1.fprintAuth = cfg.polkit;
       security.pam.services.login.fprintAuth = cfg.login;
-
       environment.systemPackages = with pkgs; [
         fprintd
       ];
@@ -28,5 +27,6 @@ in
         message = "nyx.auth.fprint.hyprlock is enabled but programs.hyprlock.enable is not.";
       }
     ];
-  };
+    })
+  ];
 }

@@ -6,11 +6,8 @@
       ../../agg.nix
   ];
 
- #Boot
-  boot.loader.systemd-boot.enable = true;
-# boot.loader.timeout = 0;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.enable = false;
+  #Boot
+  nyx.boot.loader = "systemdboot";
 
   #Swap
   swapDevices = [
@@ -20,18 +17,26 @@
     }
   ];
 
- #Locale
-  nyx.locale.jpen.enable = true;
-
  #Hostname
   networking.hostName = "Nomad";
+
+ #Locale
+  nyx.region.locale = "en_US.UTF-8";
+  nyx.region.timezone = "Asia/Tokyo";
+
+
+ #Users
+  nyx.users.einfall.enable = true;
+
+ #GUI
+  nyx.gui.wm.provider = "hyprland";
+
+ #Lock
+  nyx.gui.lock = "hyprlock";
 
  #Firewall
   networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];
-
- #Users
-  nyx.users.einfall.enable = true;
 
  #Bundles
   nyx.audio = {
@@ -41,7 +46,6 @@
 
   nyx.core.enable = true;
   nyx.ai.ik_llama.enable = true;
-  nyx.hyprland.enable = true;
   nyx.networking.enable = true;
   nyx.media.music = {
     enable = true;
@@ -75,6 +79,8 @@
 
  #Packages
   environment.systemPackages = with pkgs; [
+  steam
+
 # ryubing
 # osu-lazer-bin
 

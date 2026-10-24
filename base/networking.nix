@@ -7,9 +7,7 @@ in
 {
   options.nyx.networking = {
     enable = lib.mkEnableOption "enable networking";
-    bluetooth.enable = lib.mkEnableOption "enable bluetooth"
-
-
+    bluetooth.enable = lib.mkEnableOption "enable bluetooth";
   };
 
   config = lib.mkMerge [

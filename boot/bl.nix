@@ -1,7 +1,7 @@
-{ config, lib, pkg, ... }:
+{ config, lib, ... }:
 
 let
-  cfg = config.nyx.boot.loader;
+  cfg = config.nyx.boot;
 in
 
 {
@@ -16,17 +16,20 @@ in
   };
 
   config = lib.mkMerge [
-    (lib.mkIf (cfg.loader == "systemdboot" {
+    (lib.mkIf (cfg.loader == "systemdboot") {
       boot.loader.systemd-boot.enable = true;
 #     boot.loader.timeout = 0;
       boot.loader.efi.canTouchEfiVariables = true;
     })
 
-    (lib.mkIf (cfg.loader == "grub" {
-      boot.loader.grub = true;
+    (lib.mkIf (cfg.loader == "grub") {
+      boot.loader.grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+      };
 #     boot.loader.timeout = 0;
       boot.loader.efi.canTouchEfiVariables = true;
     })
-
   ];
 }
