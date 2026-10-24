@@ -46,7 +46,6 @@ in
         strace
         fastfetch
         lsof
-        cloc
       ];
     })
 
@@ -63,5 +62,6 @@ in
         browsh
       ];
     })
+
   ];
 }
