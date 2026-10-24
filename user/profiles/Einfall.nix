@@ -22,7 +22,6 @@ in
       home.homeDirectory = "/home/Einfall";
       home.stateVersion = "25.11";
       home.packages = [
-#       inputs.noctalia.packages.${pkgs.system}.default
       ];
 
       programs = {
